@@ -454,7 +454,192 @@ function init(){
         }
     )  
     
-    
+    //Ghast
+    const mtlLoaderGhast = new MTLLoader()
+    const objLoaderGhast = new OBJLoader()
+    mtlLoaderGhast.load('assets/models/Ghast/Ghast.mtl',//////////////////////////////////mtl
+        (mtl) => {
+            mtl.preload()
+            for (const material of Object.values(mtl.materials)) {
+                material.side = THREE.DoubleSide
+              }
+            console.log(mtl)
+            objLoaderGhast.setMaterials(mtl)
+            objLoaderGhast.load('assets/models/Ghast/Ghast.obj',////////////////////////////////////obj
+                (obj) => {
+                    obj.traverse((child) => {
+                        child.scale.multiplyScalar(5)
+                    });
+                    obj.position.set(600, 650, -300)
+                    obj.rotation.y=THREE.MathUtils.degToRad(45);
+                    scene.add(obj)
+                },
+                (xhr) => {
+                    console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+                },
+                (error) => {
+                    console.log('An error happened')
+                }
+            )
+        },
+        (xhr) => {
+            console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+        },
+        (error) => {
+            console.log('An error happened')
+        }
+    ) 
+
+
+    //pigman
+    const mtlLoaderPigman = new MTLLoader()
+    const objLoaderPigman = new OBJLoader()
+    mtlLoaderPigman.load('assets/models/Pigman/zombie_pigman.mtl',//////////////////////////////////mtl
+        (mtl) => {
+            mtl.preload()
+            for (const material of Object.values(mtl.materials)) {
+                material.side = THREE.DoubleSide
+              }
+            console.log(mtl)
+            objLoaderPigman.setMaterials(mtl)
+            objLoaderPigman.load('assets/models/Pigman/zombie_pigman.obj',////////////////////////////////////obj
+                (obj) => {
+                    obj.traverse((child) => {
+                        child.scale.multiplyScalar(6)
+                        child.castShadow = child.receiveShadow = true;
+                    });
+                    obj.position.set(-100, -82, -75)
+                    obj.rotation.y=THREE.MathUtils.degToRad(118)
+                    scene.add(obj)
+                },
+                (xhr) => {
+                    console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+                },
+                (error) => {
+                    console.log('An error happened')
+                }
+            )
+        },
+        (xhr) => {
+            console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+        },
+        (error) => {
+            console.log('An error happened')
+        }
+    )
+
+    //magmacube
+    const mtlLoaderMagmacube = new MTLLoader()
+    const objLoaderMagmacube = new OBJLoader()
+    mtlLoaderMagmacube.load('assets/models/Magmacube/magmacube.mtl',//////////////////////////////////mtl
+        (mtl) => {
+            mtl.preload()
+            for (const material of Object.values(mtl.materials)) {
+                material.side = THREE.DoubleSide
+                material.transparent=false
+              }
+            console.log(mtl)
+            objLoaderMagmacube.setMaterials(mtl)
+            objLoaderMagmacube.load('assets/models/Magmacube/magmacube.obj',////////////////////////////////////obj
+                (obj) => {
+                    obj.traverse((child) => {
+                        child.scale.multiplyScalar(7)
+                        child.castShadow = child.receiveShadow = true;
+                    });
+                    obj.position.set(650, -150, 350)
+                    obj.rotation.y=THREE.MathUtils.radToDeg(200)
+                    scene.add(obj)
+                },
+                (xhr) => {
+                    console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+                },
+                (error) => {
+                    console.log('An error happened')
+                }
+            )
+        },
+        (xhr) => {
+            console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+        },
+        (error) => {
+            console.log('An error happened')
+        }
+    )
+
+    //blaze
+    const mtlLoaderBlaze = new MTLLoader()
+    const objLoaderBlaze = new OBJLoader()
+    mtlLoaderBlaze.load('assets/models/blaze/blaze.mtl',//////////////////////////////////mtl
+        (mtl) => {
+            mtl.preload()
+            for (const material of Object.values(mtl.materials)) {
+                material.side = THREE.DoubleSide
+                material.transparent=false
+              }
+            console.log(mtl)
+            objLoaderBlaze.setMaterials(mtl)
+            objLoaderBlaze.load('assets/models/blaze/blaze.obj',////////////////////////////////////obj
+                (obj) => {
+                    obj.traverse((child) => {
+                        child.scale.multiplyScalar(4)
+                        child.castShadow = child.receiveShadow = true;
+                    });
+                    obj.position.set(-500, 300, 50)
+                    obj.rotation.y=THREE.MathUtils.degToRad(200)
+                    scene.add(obj)
+                },
+                (xhr) => {
+                    console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+                },
+                (error) => {
+                    console.log('An error happened')
+                }
+            )
+        },
+        (xhr) => {
+            console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+        },
+        (error) => {
+            console.log('An error happened')
+        }
+    )
+
+    const mtlLoaderBlaze1 = new MTLLoader()
+    const objLoaderBlaze1 = new OBJLoader()
+    mtlLoaderBlaze1.load('assets/models/blaze/blaze.mtl',//////////////////////////////////mtl
+        (mtl) => {
+            mtl.preload()
+            for (const material of Object.values(mtl.materials)) {
+                material.side = THREE.DoubleSide
+                material.transparent=false
+              }
+            console.log(mtl)
+            objLoaderBlaze1.setMaterials(mtl)
+            objLoaderBlaze1.load('assets/models/blaze/blaze.obj',////////////////////////////////////obj
+                (obj) => {
+                    obj.traverse((child) => {
+                        child.scale.multiplyScalar(4)
+                        child.castShadow = child.receiveShadow = true;
+                    });
+                    obj.position.set(-450, 300, 100)
+                    obj.rotation.y=THREE.MathUtils.degToRad(200)
+                    scene.add(obj)
+                },
+                (xhr) => {
+                    console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+                },
+                (error) => {
+                    console.log('An error happened')
+                }
+            )
+        },
+        (xhr) => {
+            console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+        },
+        (error) => {
+            console.log('An error happened')
+        }
+    )
 
 ///////////////////////////////////////////////////////////////////////////
     window.addEventListener( 'resize', onWindowResize );
