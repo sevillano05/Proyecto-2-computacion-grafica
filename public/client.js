@@ -59,10 +59,10 @@ function init(){
     lavaLight1.castShadow=true
     scene.add(lavaLight1)
 
-    // const lavaLight2 = new THREE.PointLight(0xff9999,50,2000)
-    // lavaLight2.position.set(350,-150,-200)
-    // lavaLight2.castShadow=true
-    // scene.add(lavaLight2)
+    const lavaLight2 = new THREE.PointLight(0xff9999,50,2000)
+    lavaLight2.position.set(350,-150,-200)
+    lavaLight2.castShadow=true
+    scene.add(lavaLight2)
 
     
     ///////////////// Add Sky
