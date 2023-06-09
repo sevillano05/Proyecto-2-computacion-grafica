@@ -1,40 +1,7 @@
-# Blender MTL File: 'idk.blend'
-# Material Count: 24
-
-newmtl Ancient_Debris
-Ns 0.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.000000 0.000000 0.000000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 1
-map_Kd Nether-RGB.png
+# Blender MTL File: 'None'
+# Material Count: 19
 
 newmtl Basalt
-Ns 0.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.000000 0.000000 0.000000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 1
-map_Kd Nether-RGB.png
-
-newmtl Bedrock
-Ns 0.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.000000 0.000000 0.000000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 1
-map_Kd Nether-RGB.png
-
-newmtl Blackstone
 Ns 0.000000
 Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000
@@ -227,30 +194,6 @@ d 1.000000
 illum 1
 map_Kd Nether-RGB.png
 map_Ke Nether-RGB.png
-
-newmtl Twisting_Vines
-Ns 0.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.000000 0.000000 0.000000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 1
-map_Kd Nether-RGBA.png
-map_d Nether-Alpha.png
-
-newmtl Warped_Fungus
-Ns 0.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.000000 0.000000 0.000000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 1
-map_Kd Nether-RGBA.png
-map_d Nether-Alpha.png
 
 newmtl Weeping_Vines
 Ns 0.000000
