@@ -2,18 +2,31 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { OBJLoader } from './jsm/loaders/OBJLoader.js';
 import { MTLLoader } from './jsm/loaders/MTLLoader.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { GlitchPass } from 'three/addons/postprocessing/GlitchPass.js';
 
 
-
-let camera, scene, renderer,controls;
+let camera, scene, renderer,controls, effectComposer;
 
 
 init();
+initComposer();
 animate();
 
+function initComposer() {
+    effectComposer = new EffectComposer(renderer);
 
+    const renderPass = new RenderPass(scene, camera);
+    effectComposer.addPass(renderPass);
+
+    const glitchPass = new GlitchPass();
+    effectComposer.addPass(glitchPass);
+}
 
 function init(){
+   
+
     renderer=new THREE.WebGLRenderer({
         antialias: true
     });
@@ -28,6 +41,8 @@ function init(){
     renderer.toneMapping= THREE.ReinhardToneMapping
     document.body.appendChild(renderer.domElement)
 
+   
+
     scene=new THREE.Scene();
 
     camera=new THREE.PerspectiveCamera(40,window.innerWidth/window.innerHeight,0.05,10000)
@@ -38,6 +53,8 @@ function init(){
     controls=new OrbitControls(camera,renderer.domElement)
 
     controls.target.set(-50,0,0)
+
+    
 
 
     ////////////////////////////////////////////HELPER//////////////////////////////////////
@@ -115,17 +132,17 @@ function init(){
 
     /////////////////////////MOBS
     //wither
-    const mtlLoaderBoss = new MTLLoader()
-    const objLoaderBoss = new OBJLoader()
-    mtlLoaderBoss.load('assets/models/wither/wither.mtl',//////////////////////////////////mtl
+    const mtlLoaderWither = new MTLLoader()
+    const objLoaderWither = new OBJLoader()
+    mtlLoaderWither.load('assets/models/wither/wither.mtl',//////////////////////////////////mtl
         (mtl) => {
             mtl.preload()
             for (const material of Object.values(mtl.materials)) {
                 material.side = THREE.DoubleSide
               }
             console.log(mtl)
-            objLoaderBoss.setMaterials(mtl)
-            objLoaderBoss.load('assets/models/wither/wither.obj',////////////////////////////////////obj
+            objLoaderWither.setMaterials(mtl)
+            objLoaderWither.load('assets/models/wither/wither.obj',////////////////////////////////////obj
                 (obj) => {
                     obj.traverse((child) => {
                         child.scale.multiplyScalar(4)
@@ -437,6 +454,7 @@ function init(){
         }
     )  
     
+    
 
 ///////////////////////////////////////////////////////////////////////////
     window.addEventListener( 'resize', onWindowResize );
@@ -454,13 +472,15 @@ function onWindowResize() {
 }
 
 function animate() {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera)
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     
+    
+    //renderer.render(scene, camera)
+    
+    // renderer.shadowMap.enabled = true;
+    // renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     controls.update()
-    
+    effectComposer.render()
+    requestAnimationFrame(animate);
 }
 
 
