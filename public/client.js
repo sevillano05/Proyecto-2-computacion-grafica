@@ -7,22 +7,11 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { GlitchPass } from 'three/addons/postprocessing/GlitchPass.js';
 
 
-let camera, scene, renderer,controls, effectComposer;
+let camera, scene, renderer,controls, effectComposer,glitchPass;
 
 
 init();
-initComposer();
 animate();
-
-function initComposer() {
-    effectComposer = new EffectComposer(renderer);
-
-    const renderPass = new RenderPass(scene, camera);
-    effectComposer.addPass(renderPass);
-
-    const glitchPass = new GlitchPass();
-    effectComposer.addPass(glitchPass);
-}
 
 function init(){
    
@@ -642,6 +631,14 @@ function init(){
     )
 
 ///////////////////////////////////////////////////////////////////////////
+    effectComposer = new EffectComposer(renderer);
+
+    const renderPass = new RenderPass(scene, camera);
+    effectComposer.addPass(renderPass);
+
+    const glitchPass = new GlitchPass();
+    effectComposer.addPass(glitchPass);
+
     window.addEventListener( 'resize', onWindowResize );
     
 }
@@ -657,15 +654,10 @@ function onWindowResize() {
 }
 
 function animate() {
-    
-    
-    //renderer.render(scene, camera)
-    
-    // renderer.shadowMap.enabled = true;
-    // renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     controls.update()
-    effectComposer.render()
     requestAnimationFrame(animate);
+    effectComposer.render()
+    
 }
 
 
